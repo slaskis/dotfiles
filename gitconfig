@@ -1,0 +1,25 @@
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+
+[user]
+	name = Robert Sköld
+	email = robert@publicclass.se
+
+[difftool]
+	prompt = false
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+
+[github]
+	user = slaskis
+
+[push]
+	default = current
+
+[merge]
+	ff = false

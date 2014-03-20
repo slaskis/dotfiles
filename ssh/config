@@ -1,0 +1,5 @@
+ServerAliveInterval 20
+GSSAPIAuthentication no
+ForwardAgent yes
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
