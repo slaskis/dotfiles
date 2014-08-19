@@ -67,6 +67,9 @@ alias gx='gitx --all'
 # Instead of the obnoxious lime setup
 alias lime='haxelib run lime '
 
+# Stupid alias to get gcutil to work
+alias gcutil='python2.6 `which gcutil` '
+
 # A hack to get subl to work
 alias subl='open -a "Sublime Text" '
 alias s='subl '
