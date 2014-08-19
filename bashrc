@@ -35,11 +35,6 @@ export INPUTRC="$HOME/.inputrc"
 # a fix for compiling node-canvas
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig"
 
-# Joyent Cloud API 7.0
-export SDC_URL="https://api.joyentcloud.com"
-export SDC_ACCOUNT="publicclass"
-export SDC_KEY_ID="97:2e:97:12:b3:9d:41:32:de:41:3b:2a:53:d4:4a:1c"
-
 # set haxe std path
 export HAXE_STD_PATH="$(brew --prefix)/lib/haxe/std"
 
