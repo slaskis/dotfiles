@@ -10,9 +10,6 @@ export LANG=en_US.UTF-8
 export PYTHONPATH="/usr/local/lib/python2.6/site-packages:$PYTHONPATH"
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
-# add virtualenv bin to path
-export PATH="$HOME/.virtualenv/bin:$PATH"
-
 # add postgres.app bin to path
 export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 
@@ -45,6 +42,15 @@ export SDC_KEY_ID="97:2e:97:12:b3:9d:41:32:de:41:3b:2a:53:d4:4a:1c"
 
 # set haxe std path
 export HAXE_STD_PATH="$(brew --prefix)/lib/haxe/std"
+
+# add virtualenvwrapper
+source `which virtualenvwrapper_lazy.sh`
+
+# The next line updates PATH for the Google Cloud SDK.
+source $HOME/google-cloud-sdk/path.bash.inc
+
+# The next line enables bash completion for gcloud.
+source $HOME/google-cloud-sdk/completion.bash.inc
 
 # We need a bigger file descriptor limit
 ulimit -n 10000
