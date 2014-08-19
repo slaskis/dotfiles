@@ -25,6 +25,10 @@ export PATH="/usr/local/bin:$PATH"
 # add user bin to path
 export PATH="$HOME/bin:$PATH"
 
+# add path to go and go bins to path
+export GOPATH="$HOME/.go"
+export PATH="$GOPATH/bin:$PATH"
+
 # because of cordova 3.2.0
 export JAVA_HOME=$(/usr/libexec/java_home)
 
