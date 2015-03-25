@@ -21,5 +21,8 @@
 [push]
 	default = current
 
-[merge]
-	ff = false
+[gh]
+[heroku]
+	account = robert
+[credential]
+	helper = osxkeychain
