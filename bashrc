@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# only execute brew --prefix once
+command -v brew > /dev/null && BREW_PREFIX="$(brew --prefix)"
+
 # Colorize the terminal
 export CLICOLOR=1
 export LSCOLORS=cxFxCxDxBxegedabagacad
@@ -39,7 +42,7 @@ export INPUTRC="$HOME/.inputrc"
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig"
 
 # set haxe std path
-export HAXE_STD_PATH="$(brew --prefix)/lib/haxe/std"
+export HAXE_STD_PATH="$BREW_PREFIX/lib/haxe/std"
 
 # get docker to work (using boot2docker)
 export DOCKER_TLS_VERIFY=1
@@ -53,10 +56,10 @@ source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/com
 ulimit -n 10000
 
 # bash completions
-source $(brew --prefix)/etc/bash_completion
+source "$BREW_PREFIX/etc/bash_completion"
 
 # Some usefuls Git aliases
-if command -v git; then
+if command -v git > /dev/null; then
   alias gco='git checkout '
   alias gs='git status '
   alias ga='git add '
@@ -77,9 +80,6 @@ fi
 # Instead of the obnoxious lime setup
 alias lime='haxelib run lime '
 
-# Stupid alias to get gcutil to work
-alias gcutil='python2.6 `which gcutil` '
-
 # A hack to get subl to work
 alias subl='open -a "Sublime Text" '
 alias s='subl '
@@ -89,10 +89,3 @@ source ~/.nvm/nvm.sh
 
 # awscli completion
 complete -C aws_completer aws
-
-# base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
-# configure boot2docker
-command -v boot2docker && eval $(boot2docker shellinit 2>/dev/null | grep export)
