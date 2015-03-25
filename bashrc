@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Colorize the terminal
 export CLICOLOR=1
 export LSCOLORS=cxFxCxDxBxegedabagacad
@@ -38,26 +40,38 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig"
 # set haxe std path
 export HAXE_STD_PATH="$(brew --prefix)/lib/haxe/std"
 
-# add virtualenvwrapper
-source `which virtualenvwrapper_lazy.sh`
+# get docker to work (using boot2docker)
+export DOCKER_TLS_VERIFY=1
+export DOCKER_CERT_PATH=~/.docker/boot2docker-vm
 
-# The next line updates PATH for the Google Cloud SDK.
-source $HOME/google-cloud-sdk/path.bash.inc
-
-# The next line enables bash completion for gcloud.
-source $HOME/google-cloud-sdk/completion.bash.inc
+# enable google cloud sdk
+source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
 
 # We need a bigger file descriptor limit
 ulimit -n 10000
 
+# bash completions
+source $(brew --prefix)/etc/bash_completion
+
 # Some usefuls Git aliases
-alias gco='git checkout '
-alias gs='git status '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit'
-alias gd='git diff'
-alias gx='gitx --all'
+if command -v git; then
+  alias gco='git checkout '
+  alias gs='git status '
+  alias ga='git add '
+  alias gb='git branch '
+  alias gc='git commit'
+  alias gd='git diff'
+  alias gx='gitx --all'
+
+  # for bash completion
+  __git_complete gco _git_checkout
+  __git_complete gd _git_diff
+  __git_complete gc _git_commit
+  __git_complete ga _git_add
+  __git_complete gs _git_status
+  __git_complete gb _git_branch
+fi
 
 # Instead of the obnoxious lime setup
 alias lime='haxelib run lime '
@@ -69,17 +83,15 @@ alias gcutil='python2.6 `which gcutil` '
 alias subl='open -a "Sublime Text" '
 alias s='subl '
 
-# bash completions
-source $(brew --prefix)/etc/bash_completion
-__git_complete gco _git_checkout
-__git_complete gd _git_diff
-__git_complete gc _git_commit
-__git_complete ga _git_add
-__git_complete gs _git_status
-__git_complete gb _git_branch
-
 # initialize nvm
-source $(brew --prefix nvm)/nvm.sh
+source ~/.nvm/nvm.sh
 
 # awscli completion
 complete -C aws_completer aws
+
+# base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# configure boot2docker
+command -v boot2docker && eval $(boot2docker shellinit 2>/dev/null | grep export)

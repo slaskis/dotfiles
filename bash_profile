@@ -1,5 +1,13 @@
+#!/bin/bash
+
 # Initialize rbenv
-eval "$(rbenv init -)"
+command -v rbenv && eval "$(rbenv init -)"
+
+# Initialize pyenv
+command -v pyenv && eval "$(pyenv init -)"
+
+# Initialize pyenv-virtualenv
+command -v pyenv-virtualenv-init && eval "$(pyenv virtualenv-init -)"
 
 # import the .bashrc
 test -f "$HOME/.bashrc" && . "$HOME/.bashrc"
