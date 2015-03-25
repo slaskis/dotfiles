@@ -17,7 +17,7 @@ export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PYTHONPATH="/usr/local/share/google-app-engine:$PYTHONPATH"
 
 # add postgres.app bin to path
-export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
 # add sbin to path for nginx
 export PATH="/usr/local/sbin:$PATH"
