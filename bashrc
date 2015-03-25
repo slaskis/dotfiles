@@ -11,6 +11,7 @@ export LANG=en_US.UTF-8
 # fix for bazaar (and possibly other python related packages)
 export PYTHONPATH="/usr/local/lib/python2.6/site-packages:$PYTHONPATH"
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+export PYTHONPATH="/usr/local/share/google-app-engine:$PYTHONPATH"
 
 # add postgres.app bin to path
 export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
