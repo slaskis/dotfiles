@@ -1,19 +1,22 @@
 #!/bin/bash
 
-# Initialize rbenv
+# initialize rbenv
 command -v rbenv > /dev/null && eval "$(rbenv init --no-rehash -)"
 
-# Initialize pyenv
+# initialize pyenv
 command -v pyenv > /dev/null && eval "$(pyenv init -)"
 
-# Initialize pyenv-virtualenv
+# initialize pyenv-virtualenv
 command -v pyenv-virtualenv-init > /dev/null && eval "$(pyenv virtualenv-init -)"
 
-# Initialize boot2docker
-command -v boot2docker > /dev/null && eval $(boot2docker shellinit 2>/dev/null | grep export)
+# initialize boot2docker
+command -v boot2docker > /dev/null && eval "$(boot2docker shellinit 2>/dev/null | grep export)"
+
+# initialize nvm
+test -f "$HOME/.nvm/nvm.sh" && source "$HOME/.nvm/nvm.sh"
 
 # import the .bashrc
-test -f "$HOME/.bashrc" && . "$HOME/.bashrc"
+test -f "$HOME/.bashrc" && source "$HOME/.bashrc"
 
 # command prompt
 status(){ [ $? == 0 ] && echo "+" || echo "-"; }
