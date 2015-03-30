@@ -33,7 +33,7 @@ export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
 
 # because of cordova 3.2.0
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
 
 # use custom .inputrc
 export INPUTRC="$HOME/.inputrc"
@@ -49,14 +49,16 @@ export DOCKER_TLS_VERIFY=1
 export DOCKER_CERT_PATH=~/.docker/boot2docker-vm
 
 # enable google cloud sdk
-source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
-source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+if test -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"; then
+  source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+  source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+fi
 
 # We need a bigger file descriptor limit
 ulimit -n 10000
 
 # bash completions
-source "$BREW_PREFIX/etc/bash_completion"
+test -f "$BREW_PREFIX/etc/bash_completion" && source "$BREW_PREFIX/etc/bash_completion"
 
 # Some usefuls Git aliases
 if command -v git > /dev/null; then
