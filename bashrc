@@ -44,10 +44,6 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig"
 # set haxe std path
 export HAXE_STD_PATH="$BREW_PREFIX/lib/haxe/std"
 
-# get docker to work (using boot2docker)
-export DOCKER_TLS_VERIFY=1
-export DOCKER_CERT_PATH=~/.docker/boot2docker-vm
-
 # enable google cloud sdk
 if test -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"; then
   source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
