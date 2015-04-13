@@ -9,8 +9,17 @@ command -v pyenv > /dev/null && eval "$(pyenv init -)"
 # initialize pyenv-virtualenv
 command -v pyenv-virtualenv-init > /dev/null && eval "$(pyenv virtualenv-init -)"
 
-# initialize boot2docker
-command -v boot2docker > /dev/null && eval "$(boot2docker shellinit 2>/dev/null | grep export)"
+# lazy initialize boot2docker when calling the docker command
+DOCKER=$(command -v docker)
+docker() {
+  if command -v boot2docker > /dev/null; then
+    if [[ $(boot2docker status) != 'running' ]]; then
+      boot2docker up
+    fi
+    eval "$(boot2docker shellinit 2>/dev/null | grep export)"
+  fi
+  $DOCKER $@
+}
 
 # initialize nvm
 test -f "$HOME/.nvm/nvm.sh" && source "$HOME/.nvm/nvm.sh"
