@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # only execute brew --prefix once
-command -v brew > /dev/null && BREW_PREFIX="$(brew --prefix)"
+if command -v brew > /dev/null; then
+  BREW_PREFIX="$(brew --prefix)"
+else
+  # make sure we don't set all the paths to root
+  BREW_PREFIX="/usr/local"
+fi
 
 # Colorize the terminal
 export CLICOLOR=1
@@ -20,10 +25,10 @@ export PYTHONPATH="/usr/local/share/google-app-engine:$PYTHONPATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
 # add sbin to path for nginx
-export PATH="/usr/local/sbin:$PATH"
+export PATH="$BREW_PREFIX/sbin:$PATH"
 
 # add user local user bin to path (since mavericks)
-export PATH="/usr/local/bin:$PATH"
+export PATH="$BREW_PREFIX/bin:$PATH"
 
 # add user bin to path
 export PATH="$HOME/bin:$PATH"
@@ -31,6 +36,7 @@ export PATH="$HOME/bin:$PATH"
 # add path to go and go bins to path
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$PATH:$BREW_PREFIX/opt/go/libexec/bin"
 
 # because of cordova 3.2.0
 export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
@@ -86,3 +92,4 @@ alias s='subl '
 
 # awscli completion
 complete -C aws_completer aws
+

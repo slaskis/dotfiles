@@ -31,7 +31,7 @@ test -f "$HOME/.bashrc" && source "$HOME/.bashrc"
 export PS1='\[\033[33m\]$([ $? == 0 ] && echo "+" || echo "-")\[\033[00m\] \[\033[32m\]\t\[\033[00m\] \w \[\033[90m\]$(command -v __git_ps1 @> /dev/null && __git_ps1 "(%s)")\[\033[33m\] \n$\[\033[00m\] '
 
 # don't store duplicates in history
-export HISTCONTROL=erasedups:ignoredups
+export HISTCONTROL="erasedups:ignoredups"
 
 # base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
