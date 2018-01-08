@@ -40,6 +40,9 @@ export PATH="$PATH:$BREW_PREFIX/opt/go/libexec/bin"
 # because of cordova 3.2.0
 export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
 
+# setup android sdk
+export ANDROID_HOME="$BREW_PREFIX/opt/android-sdk"
+
 # use custom .inputrc
 export INPUTRC="$HOME/.inputrc"
 
