@@ -15,6 +15,9 @@ command -v pyenv-virtualenv-init > /dev/null && eval "$(pyenv virtualenv-init -)
 # initialize nodenv
 command -v nodenv > /dev/null && eval "$(nodenv init -)"
 
+# initialize direnv
+command -v direnv > /dev/null && eval "$(direnv hook bash)"
+
 # command prompt
 export PS1='\[\033[33m\]$([ $? == 0 ] && echo "+" || echo "-")\[\033[00m\] \[\033[32m\]\t\[\033[00m\] \w \[\033[90m\]$(command -v __git_ps1 @> /dev/null && __git_ps1 "(%s)")\[\033[33m\] \n$\[\033[00m\] '
 
