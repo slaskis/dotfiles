@@ -92,6 +92,12 @@ alias lime='haxelib run lime '
 alias subl='open -a "Sublime Text" '
 alias s='subl '
 
+if command -v nvim > /dev/null; then
+	alias vim=nvim
+	alias vi=nvim
+	export VISUAL=nvim
+fi
+
 # awscli completion
 complete -C aws_completer aws
 
