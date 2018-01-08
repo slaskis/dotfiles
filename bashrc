@@ -52,11 +52,11 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig"
 # set haxe std path
 export HAXE_STD_PATH="$BREW_PREFIX/lib/haxe/std"
 
-# enable google cloud sdk
-if test -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"; then
-  source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
-  source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
-fi
+# setup joyent cloud
+export JOYENT_CLOUD_USER_NAME="department"
+export MANTA_URL="https://us-east.manta.joyent.com"
+export MANTA_USER="$JOYENT_CLOUD_USER_NAME"
+export MANTA_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
 
 # We need a bigger file descriptor limit
 ulimit -n 10000
