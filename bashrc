@@ -92,6 +92,7 @@ alias lime='haxelib run lime '
 alias subl='open -a "Sublime Text" '
 alias s='subl '
 
+# Use nvim instead of vim if it exists
 if command -v nvim > /dev/null; then
 	alias vim=nvim
 	alias vi=nvim
