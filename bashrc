@@ -69,7 +69,7 @@ if command -v git > /dev/null; then
   alias gco='git checkout '
   alias gs='git status '
   alias ga='git add '
-  alias gb='git branch '
+  #alias gb='git branch ' # commented out to avoid conflicting with the go tool
   alias gc='git commit'
   alias gd='git diff'
   alias gx='gitx --all'
@@ -81,7 +81,7 @@ if command -v git > /dev/null; then
     __git_complete gc _git_commit
     __git_complete ga _git_add
     __git_complete gs _git_status
-    __git_complete gb _git_branch
+    #__git_complete gb _git_branch
   fi
 fi
 
