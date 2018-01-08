@@ -101,3 +101,5 @@ fi
 # awscli completion
 complete -C aws_completer aws
 
+# convox completion
+source ~/.convox/completion.bash
