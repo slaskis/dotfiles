@@ -16,11 +16,6 @@ export LSCOLORS=cxFxCxDxBxegedabagacad
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# fix for bazaar (and possibly other python related packages)
-export PYTHONPATH="/usr/local/lib/python2.6/site-packages:$PYTHONPATH"
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-export PYTHONPATH="/usr/local/share/google-app-engine:$PYTHONPATH"
-
 # add postgres.app bin to path
 export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
@@ -32,6 +27,10 @@ export PATH="$BREW_PREFIX/bin:$PATH"
 
 # add user bin to path
 export PATH="$HOME/bin:$PATH"
+
+# add pyenv bin to path
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 # add path to go and go bins to path
 export GOPATH="$HOME/.go"
