@@ -24,6 +24,9 @@ Icon?
 .as3_classpath
 .bundle
 
+# xcode
+xcuserdata/
+
 # Other stuff
 *.pyc
 /tmp
