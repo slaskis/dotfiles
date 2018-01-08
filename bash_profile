@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# import the .bashrc
+test -f "$HOME/.bashrc" && source "$HOME/.bashrc"
+
 # initialize rbenv
 command -v rbenv > /dev/null && eval "$(rbenv init --no-rehash -)"
 
