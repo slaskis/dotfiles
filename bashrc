@@ -8,16 +8,16 @@ else
   BREW_PREFIX="/usr/local"
 fi
 
-# Colorize the terminal
+# colorize the terminal
 export CLICOLOR=1
 export LSCOLORS=cxFxCxDxBxegedabagacad
 
-# Set languages
+# set languages
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # add postgres.app bin to path
-export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # add sbin to path for nginx
 export PATH="$BREW_PREFIX/sbin:$PATH"
@@ -28,20 +28,13 @@ export PATH="$BREW_PREFIX/bin:$PATH"
 # add user bin to path
 export PATH="$HOME/bin:$PATH"
 
-# add pyenv bin to path
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 # add path to go and go bins to path
-export GOPATH="$HOME/.go"
+export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$PATH:$BREW_PREFIX/opt/go/libexec/bin"
 
 # because of cordova 3.2.0
-export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
-
-# setup android sdk
-export ANDROID_HOME="$BREW_PREFIX/opt/android-sdk"
+export JAVA_HOME="$(/usr/libexec/java_home 2> /dev/null)"
 
 # use custom .inputrc
 export INPUTRC="$HOME/.inputrc"
@@ -52,17 +45,8 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig"
 # set haxe std path
 export HAXE_STD_PATH="$BREW_PREFIX/lib/haxe/std"
 
-# setup joyent cloud
-export JOYENT_CLOUD_USER_NAME="department"
-export MANTA_URL="https://us-east.manta.joyent.com"
-export MANTA_USER="$JOYENT_CLOUD_USER_NAME"
-export MANTA_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
-
-# We need a bigger file descriptor limit
+# set a bigger file descriptor limit
 ulimit -n 10000
-
-# bash completions
-test -f "$BREW_PREFIX/etc/bash_completion" && source "$BREW_PREFIX/etc/bash_completion"
 
 # Some usefuls Git aliases
 if command -v git > /dev/null; then
@@ -97,10 +81,6 @@ if command -v nvim > /dev/null; then
 	alias vim=nvim
 	alias vi=nvim
 	export VISUAL=nvim
+	export VIMCONFIG=~/.config/nvim
+	export VIMDATA=~/.local/share/nvim
 fi
-
-# awscli completion
-complete -C aws_completer aws
-
-# convox completion
-source ~/.convox/completion.bash
