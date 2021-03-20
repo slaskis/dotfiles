@@ -16,7 +16,11 @@ test -f "$BREW_PREFIX/etc/bash_completion" && source "$BREW_PREFIX/etc/bash_comp
 complete -C aws_completer aws
 
 # command prompt
-export PS1='\[\033[33m\]$([ $? == 0 ] && echo "+" || echo "-")\[\033[00m\] \[\033[32m\]\t\[\033[00m\] \w \[\033[90m\]$(command -v __git_ps1 @> /dev/null && __git_ps1 "(%s)")\[\033[33m\] \n$\[\033[00m\] '
+if command -v starship > /dev/null; then
+    eval "$(starship init bash)"
+else
+    export PS1='\[\033[33m\]$([ $? == 0 ] && echo "+" || echo "-")\[\033[00m\] \[\033[32m\]\t\[\033[00m\] \w \[\033[90m\]$(command -v __git_ps1 @> /dev/null && __git_ps1 "(%s)")\[\033[33m\] \n$\[\033[00m\] '
+fi
 
 # don't store duplicates in history
 export HISTCONTROL="erasedups:ignoredups"
